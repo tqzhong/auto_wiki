@@ -22,6 +22,12 @@ This is the master index of all wiki pages. The LLM keeps this file up to date a
 
 - [Karpathy's LLM Wiki Gist](sources/karpathy-llm-wiki-gist.md) — Foundational gist proposing the LLM Wiki pattern | Ingested: 2026-05-01
 
+## Sessions
+
+*(Distilled conversation summaries — extracted knowledge from AI dialogues)*
+
+*No entries yet. Run "请帮我蒸馏这次对话" at the end of a valuable conversation to get started.*
+
 ## Comparisons
 
 *No entries yet. Comparisons and analyses will appear here as the wiki grows.*

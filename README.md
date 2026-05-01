@@ -32,7 +32,8 @@ auto_wiki/
 ├── CLAUDE.md              # Schema / operating manual for the LLM agent
 ├── README.md              # This file
 ├── raw/                   # Immutable raw sources
-│   └── assets/            # Downloaded images and attachments
+│   ├── assets/            # Downloaded images and attachments
+│   └── sessions/          # Raw conversation exports
 ├── wiki/                  # LLM-maintained wiki pages
 │   ├── index.md           # Master index of all pages
 │   ├── log.md             # Chronological activity log
@@ -40,10 +41,12 @@ auto_wiki/
 │   ├── entities/          # People, organizations, products
 │   ├── concepts/          # Ideas, theories, methods, frameworks
 │   ├── sources/           # One summary per ingested source
+│   ├── sessions/          # Distilled conversation summaries
 │   └── comparisons/       # Analyses, comparisons, Q&A artifacts
 └── tools/                 # CLI utilities
     ├── search_wiki.sh     # Text search across wiki pages
-    └── wiki_stats.sh      # Wiki statistics
+    ├── wiki_stats.sh      # Wiki statistics
+    └── distill_session.sh # Helper to export/save conversations
 ```
 
 ## How It Works
