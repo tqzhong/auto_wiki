@@ -65,15 +65,17 @@ proxy 的 `/health` 显示 `api_key_valid: false` 是因为代码里写了 `star
 
 ### 7. `/context` 只显示 200k 的原因和修复
 
-后来发现用 `xclaude` 启动后执行 `/context` 只显示 `200k`，但 Xiaomi API 实际支持 `1M` 上下文。定位结果：`xclaude` wrapper 本身没有配置 200k；问题在于本地 `claude-code-proxy` 没有 `/v1/models` 模型发现端点，Claude Code 无法从 proxy 读取 `max_input_tokens`，又默认以 `sonnet` 别名启动，所以按本地默认窗口估算。
+后来发现用 `xclaude` 启动后执行 `/context` 只显示 `200k`，但 Xiaomi API 实际支持 `1M` 上下文。第一轮曾尝试让 proxy 增加 `/v1/models` 并返回 `max_input_tokens=1000000`，但重启后 `/context` 仍显示 `200k`。
 
-修复方式：
-- 在 `~/Desktop/claude-code-proxy/src/api/endpoints.py` 增加 `GET /v1/models` 和 `GET /v1/models/{model_id}`；
-- 在 `~/Desktop/claude-code-proxy/src/core/config.py` 增加 `MAX_INPUT_TOKENS` 和 `MODEL_DISPLAY_NAME` 配置；
-- 在 `~/Desktop/claude-code-proxy/.env` 设置 `MAX_INPUT_TOKENS=1000000`、`MODEL_DISPLAY_NAME="Xiaomi MiMo v2.5 Pro"`；
-- 在 `~/bin/xclaude` 中把默认模型从 `sonnet` 改为 `mimo-v2.5-pro`。
+最终定位结果：Claude Code v2.1.126 的 `/context` 并不会通过 proxy 的 `/v1/models` 动态读取窗口。debug 日志显示 `/context` 只调用 `/v1/messages/count_tokens`。客户端本地逻辑对未知模型默认使用 `200k`；只有模型名带 `[1m]` 或命中特定官方模型/1M beta 时才按 `1M` 计算。
 
-已验证 `http://127.0.0.1:8082/v1/models` 返回 `max_input_tokens: 1000000`，且 `~/bin/xclaude -p "只回复 OK"` 可正常返回。
+最终修复方式：
+- 保留 proxy 的 `/v1/models` 兼容增强和 `MAX_INPUT_TOKENS=1000000` 配置；
+- 在 `~/bin/xclaude` 中把默认模型改为 `mimo-v2.5-pro[1m]`，而不是 `mimo-v2.5-pro`；
+- 验证 `~/bin/xclaude -p "只回复 OK"` 可正常返回；
+- 验证直接启动 `~/bin/xclaude` 后执行 `/context` 显示 `123/1m tokens`、`Auto-compact window: 1m tokens`。
+
+关键经验：对 Claude Code v2.1.126，`[1m]` 是客户端识别 1M context 的有效标记；proxy 的模型元数据不是 `/context` 显示的决定因素。
 
 ## Decisions Made
 

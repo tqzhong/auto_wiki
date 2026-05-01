@@ -43,7 +43,17 @@ Claude Code → claude-code-proxy → Xiaomi mimo API
 
 ## Claude Code 适配注意
 
-Claude Code 的 `/context` 不会自动知道 OpenAI-compatible 后端模型的真实上下文窗口。通过 `claude-code-proxy` 接入时，需要 proxy 暴露 Anthropic 风格的 `/v1/models` 和 `/v1/models/{model}`，并返回 `max_input_tokens`。当前本地 proxy 已配置 `MAX_INPUT_TOKENS=1000000`，`xclaude` 默认模型为 `mimo-v2.5-pro`。
+Claude Code 的 `/context` 不会自动使用 OpenAI-compatible 后端模型的真实上下文窗口。实测在 Claude Code v2.1.126 中，`/context` 的窗口判断主要来自客户端内置模型名逻辑：未知模型默认按 `200k` 处理。
+
+对 Xiaomi `mimo-v2.5-pro`，需要让 wrapper 传入带 1M 标记的模型名：
+
+```bash
+claude --model 'mimo-v2.5-pro[1m]'
+```
+
+Claude Code 会把 `[1m]` 用作本地 1M context 标记；发 API 请求时会去掉该后缀。当前 `xclaude` 默认模型已设为 `mimo-v2.5-pro[1m]`，执行 `/context` 已验证显示 `1m`。
+
+补充：proxy 暴露 `/v1/models` 并返回 `max_input_tokens=1000000` 是合理的兼容增强，但本次排查显示它不会改变 Claude Code v2.1.126 的 `/context` 显示。
 
 ## 已知限制
 
