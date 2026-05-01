@@ -9,6 +9,8 @@ This is the master index of all wiki pages. The LLM keeps this file up to date a
 ## Entities
 
 - [Andrej Karpathy](entities/andrej-karpathy.md) — AI researcher and educator; creator of the LLM Wiki pattern | Updated: 2026-05-01
+- [claude-code-proxy](entities/claude-code-proxy.md) — Anthropic → OpenAI 协议转换代理，让 Claude Code 使用第三方 API | Updated: 2026-05-01
+- [Xiaomi mimo API](entities/xiaomi-mimo-api.md) — Xiaomi mimo-v2.5-pro API，OpenAI-compatible 格式 | Updated: 2026-05-01
 
 ## Concepts
 
@@ -17,6 +19,7 @@ This is the master index of all wiki pages. The LLM keeps this file up to date a
 - [Incremental Compilation](concepts/incremental-compilation.md) — Knowledge compiled once and kept current, not re-derived per query | Updated: 2026-05-01
 - [Human-LLM Collaboration](concepts/human-llm-collaboration.md) — Division of labor: human curates and directs, LLM maintains and structures | Updated: 2026-05-01
 - [Memex (Vannevar Bush)](concepts/memex-concept.md) — 1945 vision of a personal knowledge store with associative trails | Updated: 2026-05-01
+- [Claude Code 第三方 API 配置](concepts/claude-code-third-party-api-setup.md) — 通过代理网关让 Claude Code 使用非 Anthropic API 的完整方法 | Updated: 2026-05-01
 
 ## Sources
 
@@ -24,9 +27,7 @@ This is the master index of all wiki pages. The LLM keeps this file up to date a
 
 ## Sessions
 
-*(Distilled conversation summaries — extracted knowledge from AI dialogues)*
-
-*No entries yet. Run "请帮我蒸馏这次对话" at the end of a valuable conversation to get started.*
+- [Claude Code 使用 Xiaomi API 代理配置](sessions/2026-05-01-claude-code-proxy-setup.md) — 通过 claude-code-proxy 让 Claude Code 使用 Xiaomi mimo-v2.5-pro，解决环境变量和代理链路问题 | Distilled: 2026-05-01
 
 ## Comparisons
 
