@@ -63,6 +63,18 @@ GitHub / 外网
 
 proxy 的 `/health` 显示 `api_key_valid: false` 是因为代码里写了 `startswith("sk-")`。这只影响健康检查展示，**不影响实际请求**。Xiaomi key 不以 sk- 开头没有问题。
 
+### 7. `/context` 只显示 200k 的原因和修复
+
+后来发现用 `xclaude` 启动后执行 `/context` 只显示 `200k`，但 Xiaomi API 实际支持 `1M` 上下文。定位结果：`xclaude` wrapper 本身没有配置 200k；问题在于本地 `claude-code-proxy` 没有 `/v1/models` 模型发现端点，Claude Code 无法从 proxy 读取 `max_input_tokens`，又默认以 `sonnet` 别名启动，所以按本地默认窗口估算。
+
+修复方式：
+- 在 `~/Desktop/claude-code-proxy/src/api/endpoints.py` 增加 `GET /v1/models` 和 `GET /v1/models/{model_id}`；
+- 在 `~/Desktop/claude-code-proxy/src/core/config.py` 增加 `MAX_INPUT_TOKENS` 和 `MODEL_DISPLAY_NAME` 配置；
+- 在 `~/Desktop/claude-code-proxy/.env` 设置 `MAX_INPUT_TOKENS=1000000`、`MODEL_DISPLAY_NAME="Xiaomi MiMo v2.5 Pro"`；
+- 在 `~/bin/xclaude` 中把默认模型从 `sonnet` 改为 `mimo-v2.5-pro`。
+
+已验证 `http://127.0.0.1:8082/v1/models` 返回 `max_input_tokens: 1000000`，且 `~/bin/xclaude -p "只回复 OK"` 可正常返回。
+
 ## Decisions Made
 
 - 选择 `claude-code-proxy` 方案而非直接配置（Claude Code 原生只认 Anthropic API 格式）
