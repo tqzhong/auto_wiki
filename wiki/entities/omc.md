@@ -5,6 +5,8 @@ created: 2026-05-02
 updated: 2026-05-02
 related:
   - ../concepts/multi-agent-orchestration.md
+  - ../concepts/human-llm-collaboration.md
+  - ../concepts/claude-code-third-party-api-setup.md
   - claude-code-proxy.md
   - ../sessions/2026-05-02-omc-usage-guide.md
 sources: []
@@ -143,7 +145,9 @@ omc team shutdown implement-user-authentication-with-tests
 
 - OMC 的核心理念与 [[multi-agent-orchestration]] 一致：多个专长各异的 Agent 协作优于单一全能 Agent
 - 与 [[claude-code-proxy]] 配合时，OMC 启动的 Claude Code 实例也会走代理链路
+- OMC 的"人设任务→Agent 执行→人审查"模式是 [[human-llm-collaboration]] 的多 Agent 扩展
 - 可与 Codex、Gemini 等其他 provider 组合使用
+- 完整使用指南见 [[2026-05-02-omc-usage-guide]]
 
 ## Open Questions
 

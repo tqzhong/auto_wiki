@@ -54,3 +54,18 @@ Each entry is a level-2 heading with a date prefix for easy parsing.
 - Pages updated:
   - `wiki/index.md` — Added 3 new pages
 - Key insight: OMC 的核心价值是多 Agent 角色分工协作（omc team），而非单 Agent 多工具；team 语法 `N:provider[:role]` 是最常用入口
+
+## [2026-05-02] lint | Cross-reference audit and overview refresh
+- Issues found: 6
+- Fixed:
+  - `overview.md` — Rewrote from "just initialized" state to reflect 16 pages across 5 categories; added connections map with OMC/proxy branches
+  - `omc.md` — Added missing connections to `human-llm-collaboration` and session page; added related frontmatter entries
+  - `multi-agent-orchestration.md` — Added missing connections to `claude-code-third-party-api-setup` and `claude-code-proxy`
+  - `human-llm-collaboration.md` — Added missing connection to `multi-agent-orchestration`; updated related frontmatter
+  - `claude-code-proxy.md` — Added missing connection to `omc` (proxy chain applies to OMC agents too); updated related frontmatter
+  - `xiaomi-mimo-api.md` — Added missing connection to `omc`; updated related frontmatter
+  - `claude-code-third-party-api-setup.md` — Added missing connection to `omc`; updated related frontmatter
+  - `index.md` — Updated dates for all modified pages (5 entities/concepts bumped to 2026-05-02)
+- Deferred:
+  - `raw/sessions/` 目录为空——用户提到有 Codex session 文件未蒸馏，但 `~/.codex/archived_sessions/` 下的 JSONL 文件需要用户确认哪些值得蒸馏
+  - Comparisons 分类仍为空——可考虑创建 Claude vs Codex vs Gemini 多 Agent 编排对比页

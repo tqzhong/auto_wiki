@@ -2,11 +2,12 @@
 type: entity
 tags: [tool, proxy, claude-code, open-source]
 created: 2026-05-01
-updated: 2026-05-01
+updated: 2026-05-02
 related:
   - ../concepts/claude-code-third-party-api-setup.md
   - xiaomi-mimo-api.md
   - ../sessions/2026-05-01-claude-code-proxy-setup.md
+  - omc.md
 sources: []
 summary: "Anthropic Messages API → OpenAI-compatible API 的协议转换代理，让 Claude Code 可以使用第三方 API"
 ---
@@ -54,6 +55,7 @@ SMALL_MODEL=<模型名>
 - 配合 [[xiaomi-mimo-api]] 使用
 - 配置方法详见 [[claude-code-third-party-api-setup]]
 - 完整调试记录在 [[2026-05-01-claude-code-proxy-setup]]
+- [[omc]] 启动的 Claude Code 实例也会走此代理链路（需确保环境变量一致）
 
 ## Open Questions
 

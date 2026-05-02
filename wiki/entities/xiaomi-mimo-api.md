@@ -2,11 +2,12 @@
 type: entity
 tags: [api, xiaomi, mimo, llm-provider]
 created: 2026-05-01
-updated: 2026-05-01
+updated: 2026-05-02
 related:
   - ../concepts/claude-code-third-party-api-setup.md
   - claude-code-proxy.md
   - ../sessions/2026-05-01-claude-code-proxy-setup.md
+  - omc.md
 sources: []
 summary: "Xiaomi mimo-v2.5-pro API，OpenAI-compatible 格式，作为 Claude Code 的后端模型使用"
 ---
@@ -64,6 +65,7 @@ Claude Code 会把 `[1m]` 用作本地 1M context 标记；发 API 请求时会�
 
 - 通过 [[claude-code-proxy]] 接入
 - 配置方法详见 [[claude-code-third-party-api-setup]]
+- [[omc]] 启动的多 Agent 团队中，Claude agent 也会通过 proxy 使用此 API
 
 ## Open Questions
 

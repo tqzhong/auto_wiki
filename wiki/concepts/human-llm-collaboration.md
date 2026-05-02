@@ -2,8 +2,8 @@
 type: concept
 tags: [collaboration, human-ai, workflow, llm-wiki]
 created: 2026-05-01
-updated: 2026-05-01
-related: [llm-wiki-pattern.md, incremental-compilation.md]
+updated: 2026-05-02
+related: [llm-wiki-pattern.md, incremental-compilation.md, multi-agent-orchestration.md]
 sources: [../../raw/karpathy-llm-wiki-gist.md]
 summary: "The division of labor: human curates and directs, LLM maintains and structures"
 ---
@@ -52,6 +52,7 @@ The LLM Wiki pattern defines a clear division of labor between human and LLM age
 
 - This collaboration model is central to the [LLM Wiki Pattern](llm-wiki-pattern.md)
 - The human's role is curation; the LLM's role is [Incremental Compilation](incremental-compilation.md)
+- [Multi-Agent Orchestration](multi-agent-orchestration.md) extends this pattern: multiple AI Agents collaborate under human oversight, rather than a single LLM
 
 ## Open Questions
 

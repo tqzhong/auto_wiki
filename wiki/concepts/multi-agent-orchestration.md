@@ -120,6 +120,8 @@ summary: "多个专长各异的 AI Agent 分角色协作完成复杂任务，通
 - OMC 是多 Agent 编排的 CLI 实现，见 [[omc]]
 - 多 Agent 编排中的人类角色与 [[human-llm-collaboration]] 一致：人类是决策者，Agent 是执行者
 - 每个 Agent 可以维护自己的知识库，类似于 [[llm-wiki-pattern]] 的变体
+- 多 Agent 可配合 [[claude-code-third-party-api-setup]] 使用第三方 API（OMC 的 Claude agent 同样走代理链路）
+- OMC + proxy 的实际架构见 [[claude-code-proxy]]
 
 ## Open Questions
 

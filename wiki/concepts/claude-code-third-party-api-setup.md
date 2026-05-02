@@ -2,11 +2,12 @@
 type: concept
 tags: [claude-code, api-gateway, proxy, third-party-api, environment-variables]
 created: 2026-05-01
-updated: 2026-05-01
+updated: 2026-05-02
 related:
   - ../entities/claude-code-proxy.md
   - ../entities/xiaomi-mimo-api.md
   - ../sessions/2026-05-01-claude-code-proxy-setup.md
+  - ../entities/omc.md
 sources: []
 summary: "通过代理网关让 Claude Code 使用非 Anthropic API 的完整方法，包括环境变量、代理链路、常见陷阱"
 ---
@@ -106,6 +107,7 @@ claude --model 'mimo-v2.5-pro[1m]' "$@"
 - 实现依赖 [[claude-code-proxy]] 作为协议转换网关
 - 目标 API 为 [[xiaomi-mimo-api]]
 - 完整调试过程记录在 [[2026-05-01-claude-code-proxy-setup]]
+- [[omc]] 启动的多 Agent 团队中，Claude agent 同样需要正确配置代理链路才能正常工作
 
 ## Open Questions
 
