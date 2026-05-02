@@ -43,3 +43,14 @@ Each entry is a level-2 heading with a date prefix for easy parsing.
 - Pages updated:
   - `wiki/index.md` — Added 4 new pages
 - Key insight: 环境变量继承污染（ANTHROPIC_API_KEY、HTTP_PROXY）是代理不工作的首要原因，干净环境启动是关键
+
+## [2026-05-02] distill | OMC 多智能体编排工具使用指南
+- Source: 当前 Claude Code 对话 session
+- Platform: Claude Code
+- Pages created:
+  - `wiki/entities/omc.md` — OMC CLI 工具实体页面
+  - `wiki/concepts/multi-agent-orchestration.md` — 多智能体编排概念页面
+  - `wiki/sessions/2026-05-02-omc-usage-guide.md` — Session 摘要
+- Pages updated:
+  - `wiki/index.md` — Added 3 new pages
+- Key insight: OMC 的核心价值是多 Agent 角色分工协作（omc team），而非单 Agent 多工具；team 语法 `N:provider[:role]` 是最常用入口

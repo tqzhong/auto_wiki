@@ -7,6 +7,9 @@
 .DS_Store
 Thumbs.db
 
+# OMC
+.omc/
+
 # Editor
 *.swp
 *.swo
